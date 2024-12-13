@@ -1,4 +1,42 @@
-/* Navbar */
+/* =======================================================
+   GLOBAL VARIABLES & BASE STYLES
+   ======================================================= */
+
+/* Root variables for site-wide styling. Update once, apply everywhere. */
+:root {
+  --primary: #ff6a3e;
+  --primaryLight: #ffba43;
+  --secondary: #ffba43;
+  --secondaryLight: #ffba43;
+  --headerColor: #1a1a1a;
+  --bodyTextColor: #4e4b66;
+  --bodyTextColorWhite: #fafbfc;
+
+  /* Font sizes to scale responsively */
+  --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem); /* 13px - 16px */
+  --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem); /* 31px - 49px */
+  --bodyFontSize: 1rem;
+
+  /* Section padding and spacing */
+  --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box; /* Box-sizing for predictable layout */
+}
+
+/* =======================================================
+   NAVBAR
+   ======================================================= */
+
+/* Navbar fixed at top with high z-index */
 #navbar {
   position: fixed;
   top: 0;
@@ -7,26 +45,33 @@
   z-index: 999;
 }
 
-/* Hero Section */
+/* =======================================================
+   HERO SECTION
+   ======================================================= */
+
+/* Full viewport hero section */
 #hero {
   width: 100%;
-  min-height: 100vh; /* ensures hero takes full viewport height */
+  min-height: 100vh;
   background: linear-gradient(to bottom right, #2018bf, #f0f0f0);
-  /* Add padding-top equal or greater than navbar height to prevent content from going under it */
-  padding-top: 5rem;
+  padding-top: 5rem; /* Prevent hero content from sitting behind navbar */
   position: relative;
   z-index: 1;
 }
 
-/* Optional: Adjust spacing, typography, or other global styles as needed */
+/* Global Typography */
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
 }
-/* About Section */
+
+/* =======================================================
+   ABOUT SECTION
+   ======================================================= */
+
 #about {
-  padding-top: 5rem; /* Add any additional spacing if needed */
+  padding-top: 5rem;
   width: 100%;
   height: auto;
 }
@@ -46,4 +91,33 @@ body {
   max-width: 100%;
   height: auto;
   border: 2px solid #ddd;
+}
+
+/* =======================================================
+   SKILLS SECTION
+   ======================================================= */
+
+#skills {
+  background: #f8f9fa; /* Light background to distinguish section */
+}
+
+#skills h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+#skills p.lead {
+  font-size: 1.25rem;
+}
+
+#skills .skill-icon,
+#skills .skill-img {
+  font-size: 3rem;
+  color: #2018bf; /* Accent color */
+  margin-bottom: 0.5rem;
+}
+
+#skills .skill-img {
+  max-width: 50px;
+  height: auto;
 }
