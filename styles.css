@@ -28,7 +28,7 @@ body {
 #about {
   padding-top: 5rem; /* Add any additional spacing if needed */
   width: 100%;
-  min-height: 100vh; /* ensures hero takes full viewport height */
+  height: auto;
 }
 
 #about h2 {
