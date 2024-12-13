@@ -2,88 +2,207 @@
    GLOBAL VARIABLES & BASE STYLES
    ======================================================= */
 
-/* Root variables for site-wide styling. Update once, apply everywhere. */
+/* 
+   Update these variables to change theme colors and fonts site-wide.
+   Adjust the primary/secondary colors, text color, and font sizes as needed.
+*/
 :root {
-  --primary: #ff6a3e;
-  --primaryLight: #ffba43;
-  --secondary: #ffba43;
-  --secondaryLight: #ffba43;
-  --headerColor: #1a1a1a;
-  --bodyTextColor: #4e4b66;
-  --bodyTextColorWhite: #fafbfc;
+  --primary-color: #2018bf; /* Primary accent color */
+  --secondary-color: #f0f0f0; /* Secondary background color */
+  --text-color: #1a1a1a; /* Primary text color */
+  --light-bg: #f8f9fa; /* Light background for sections */
+  --footer-bg: #f8f9fa; /* Footer background */
+  --navbar-height: 56px; /* Navbar and footer height */
 
-  /* Font sizes to scale responsively */
-  --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem); /* 13px - 16px */
-  --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem); /* 31px - 49px */
-  --bodyFontSize: 1rem;
-
-  /* Section padding and spacing */
-  --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
+  /* Font sizes */
+  --font-size-small: 0.875rem; /* 14px */
+  --font-size-base: 1rem; /* 16px */
+  --font-size-large: 1.5rem; /* 24px */
+  --font-size-xl: 2.5rem; /* 40px */
 }
 
 body {
   margin: 0;
   padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-color);
+  background-color: #fff;
 }
 
 *,
-*:before,
-*:after {
-  box-sizing: border-box; /* Box-sizing for predictable layout */
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
+/* Adjust body padding to prevent content from hiding behind navbar */
+body {
+  padding-top: var(--navbar-height);
+}
 /* =======================================================
-   NAVBAR
+   NAVBAR STYLES
    ======================================================= */
 
-/* Navbar fixed at top with high z-index */
+/*
+  Base navbar styles for the default, non-expanded state.
+  The navbar is fixed at the top and uses a light background.
+*/
+
 #navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  height: var(--navbar-height);
   z-index: 999;
+  background-color: var(--light-bg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+/* Base link styles in the navbar for desktop and non-expanded states */
+.nav-link {
+  font-size: var(--font-size-base);
+  color: var(--text-color);
+}
+
+.nav-link:hover {
+  color: var(--primary-color);
+}
+
+/*
+  For mobile screens (max-width: 768px), we set up the navbar-collapse
+  to be a full-screen overlay when expanded. We also remove transitions 
+  to prevent it from shifting positions or partially showing before fully aligned.
+*/
+
+@media (max-width: 768px) {
+  /* 
+    Position the collapsed menu as a fixed overlay from the start.
+    It's hidden by default (display: none), and becomes visible when .show is applied.
+    This prevents the text from appearing on the left and shifting later.
+  */
+  .navbar-collapse {
+    position: fixed;
+    top: var(--navbar-height);
+    right: 0;
+    width: 100%;
+    height: calc(100vh - var(--navbar-height));
+    background: rgba(
+      32,
+      24,
+      191,
+      0.8
+    ); /* Semi-transparent primary color background */
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    z-index: 998;
+    padding: 2rem;
+    display: none; /* Hidden until .show is applied */
+    flex-direction: column;
+    align-items: flex-end; /* Align menu items to the right */
+    transition: none !important; /* Disable default collapse transition */
+  }
+
+  /* When the navbar is expanded (.show), instantly show the full-screen menu */
+  .navbar-collapse.show {
+    display: flex;
+  }
+
+  /* Override Bootstrap's .collapsing state to prevent height animation */
+  .collapsing {
+    display: flex !important;
+    height: auto !important;
+    transition: none !important;
+  }
+
+  /* Styles for navbar links in the expanded overlay state */
+  .navbar-nav .nav-link {
+    color: #fff;
+    font-size: 1.25rem;
+    margin: 0.5rem 0;
+    text-align: right; /* Ensure text stays aligned to the right */
+  }
+
+  .navbar-nav .nav-link:hover {
+    color: #f0f0f0;
+  }
 }
 
 /* =======================================================
-   HERO SECTION
+   HERO SECTION STYLES
    ======================================================= */
 
-/* Full viewport hero section */
+/*
+  The hero section takes up the full viewport height and uses a 
+  gradient background from the primary to the secondary color.
+  Text and buttons have colors adjusted for readability.
+*/
+
 #hero {
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(to bottom right, #2018bf, #f0f0f0);
-  padding-top: 5rem; /* Prevent hero content from sitting behind navbar */
+  background: linear-gradient(
+    to bottom right,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   position: relative;
   z-index: 1;
 }
 
-/* Global Typography */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+#hero-title {
+  font-size: var(--font-size-xl);
+  color: #fff;
+}
+
+#hero-subtitle {
+  font-size: var(--font-size-large);
+  color: #fff;
+  margin-bottom: 2rem;
+}
+
+#hero .btn-primary {
+  background-color: var(--primary-color);
+  border: none;
+}
+
+#hero .btn-primary:hover {
+  background-color: #140f7a; /* Slightly darker tone of primary */
 }
 
 /* =======================================================
-   ABOUT SECTION
+   ABOUT SECTION STYLES
    ======================================================= */
 
+/*
+  The About section introduces the person or the brand.
+  It includes a title, description, and an image (e.g., a profile photo).
+*/
+
 #about {
-  padding-top: 5rem;
-  width: 100%;
-  height: auto;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
-#about h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
+#about-title {
+  font-size: var(--font-size-xl);
+  color: var(--text-color);
   margin-bottom: 1rem;
 }
 
-#about p.lead {
-  font-size: 1.25rem;
+#about-description {
+  font-size: var(--font-size-base);
+  color: var(--text-color);
   margin-bottom: 1.5rem;
 }
 
@@ -91,33 +210,177 @@ body {
   max-width: 100%;
   height: auto;
   border: 2px solid #ddd;
+  border-radius: 50%;
 }
 
 /* =======================================================
-   SKILLS SECTION
+   PROJECTS SECTION (CAROUSEL) STYLES
    ======================================================= */
 
+/*
+  The Projects section often uses a carousel to showcase work samples.
+  A background color is applied for contrast, and carousel images 
+  are sized for visual impact.
+*/
+
+#projects {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background-color: var(--secondary-color);
+}
+
+.carousel-item img {
+  height: 600px;
+  object-fit: cover;
+}
+
+/* Adjust the carousel image height on smaller screens for better scaling */
+@media (max-width: 768px) {
+  .carousel-item img {
+    height: 300px;
+  }
+}
+
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+/* =======================================================
+   SKILLS SECTION STYLES
+   ======================================================= */
+
+/*
+  The Skills section lists technologies or tools you are proficient with.
+  It uses a grid layout of icons and skill names.
+*/
+
 #skills {
-  background: #f8f9fa; /* Light background to distinguish section */
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background-color: var(--light-bg);
 }
 
-#skills h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
+#skills-title {
+  font-size: var(--font-size-xl);
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
 }
 
-#skills p.lead {
-  font-size: 1.25rem;
-}
-
-#skills .skill-icon,
-#skills .skill-img {
-  font-size: 3rem;
-  color: #2018bf; /* Accent color */
+#skills-list .skill-img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
   margin-bottom: 0.5rem;
 }
 
-#skills .skill-img {
-  max-width: 50px;
-  height: auto;
+#skills-list p {
+  font-size: var(--font-size-small);
+  margin-top: 0.5rem;
+  color: var(--text-color);
+}
+
+.skill-img {
+  /* Transition ensures a smooth effect when hovering */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-img:hover {
+  /* Slight upward movement */
+  transform: translateY(-3px);
+
+  /* A subtle shadow to emphasize elevation */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* =======================================================
+   CONTACT SECTION STYLES
+   ======================================================= */
+
+/*
+  The Contact section provides a form for users to reach out.
+  It includes form inputs for name, phone, email and shows contact details 
+  and social media icons on the side.
+*/
+
+#contact {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+#contact-title {
+  font-size: var(--font-size-xl);
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+#contact-subtitle {
+  font-size: var(--font-size-large);
+  color: var(--text-color);
+  margin-bottom: 2rem;
+}
+
+#contact .form-label {
+  font-weight: 600;
+}
+
+#contact .fa-2x {
+  transition: color 0.3s;
+}
+
+#contact .fa-2x:hover {
+  color: var(--primary-color);
+}
+
+/* =======================================================
+   FOOTER STYLES
+   ======================================================= */
+
+/*
+  The footer is a simple strip at the bottom, typically 
+  the same height as the navbar, containing a logo and a credit line.
+*/
+
+footer {
+  background-color: var(--footer-bg);
+  color: var(--text-color);
+  height: var(--navbar-height);
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+footer img {
+  height: 40px;
+  width: auto;
+}
+
+footer p {
+  margin: 0;
+  font-size: var(--font-size-small);
+  margin-left: 1rem;
+}
+
+/* =======================================================
+   RESPONSIVE STYLES
+   ======================================================= */
+
+/*
+  Adjust typography and spacing for smaller screens for better 
+  mobile readability.
+*/
+
+@media (max-width: 576px) {
+  #hero-title {
+    font-size: 2rem;
+  }
+
+  #hero-subtitle {
+    font-size: 1.25rem;
+  }
+
+  footer img {
+    height: 30px;
+  }
 }
