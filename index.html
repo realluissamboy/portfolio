@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>My Portfolio</title>
+    <title>Luis Samboy</title>
 
     <!-- Bootstrap CSS -->
     <link
@@ -19,9 +19,6 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- Your Custom Styles -->
-    <link rel="stylesheet" href="styles.css" />
-
     <!-- Bootstrap JS Bundle (includes Popper) -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -30,8 +27,8 @@
       defer
     ></script>
 
-    <!-- Custom JavaScript (e.g., for additional interactivity) -->
-    <script src="carousel.js" defer></script>
+    <!-- Custom Styles: Moved to the bottom to override Bootstrap -->
+    <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body>
@@ -44,13 +41,13 @@
       <div class="container-fluid">
         <a class="navbar-brand d-flex align-items-center" href="#hero">
           <img
-            src="https://www.linkedin.com/favicon.ico"
+            src="https://my-images-bucket-samboy.s3.us-east-2.amazonaws.com/Remove+background+project.png"
             alt="Logo"
             width="30"
             height="30"
             class="me-2"
           />
-          <span>My Portfolio</span>
+          <span>Luis Samboy</span>
         </a>
 
         <button
@@ -90,14 +87,24 @@
        Update the hero text and button link as needed.
   ========================== -->
     <section
-      class="d-flex flex-column justify-content-center align-items-center text-center"
+      class="d-flex flex-column justify-content-center align-items-start text-start"
       id="hero"
     >
       <div class="container">
-        <h1 class="display-4 mb-3" id="hero-title">Welcome to My Portfolio</h1>
+        <img
+          src="https://my-images-bucket-samboy.s3.us-east-2.amazonaws.com/Remove+background+project.png"
+          alt="Logo"
+          class="hero-logo mb-3"
+        />
+        <h1 class="display-4 mb-3" id="hero-title">Luis Samboy</h1>
         <p class="lead mb-4" id="hero-subtitle">
-          Introduce yourself, showcase your projects, and tell the world about
-          your skills and experience.
+          I’m a storyteller, but my stories are told in charts, numbers, and
+          trends. I ask questions of your data –
+          <i>What are you trying to say?</i> – and it answers, revealing
+          patterns and truths hidden beneath the surface. I weave insights into
+          dashboards that don’t just show information but tell a story, helping
+          you uncover opportunities, make sharper decisions, and drive real
+          success. Every dataset has a narrative – I’m here to help you find it.
         </p>
         <a href="#projects" class="btn btn-primary btn-lg">View My Work</a>
       </div>
@@ -109,41 +116,54 @@
   ========================== -->
     <section id="about" class="container py-5">
       <div class="row align-items-center">
-        <div class="col-md-4 text-center mb-4 mb-md-0">
-          <!-- Replace with your own profile photo URL -->
-          <img
-            src="https://via.placeholder.com/300"
-            alt="Profile Photo"
-            class="img-fluid rounded-circle"
-          />
-        </div>
-        <div class="col-md-8">
+        <!-- Text Column: Appears First -->
+        <div class="col-md-8 order-md-1 text-start">
           <h2 class="mb-3" id="about-title">About Me</h2>
           <p class="lead" id="about-description">
-            I’m a passionate web developer who enjoys turning complex ideas into
-            beautiful and efficient web solutions. With experience in HTML, CSS,
-            and Bootstrap, I focus on building responsive, user-friendly
-            interfaces.
+            I’m passionate about turning data into actionable insights that
+            drive smarter decisions and measurable success. With expertise in
+            tools like SQL, Tableau, and Power BI, I enjoy analyzing complex
+            datasets to uncover trends, build dynamic dashboards, and tell
+            impactful data stories that empower businesses.
           </p>
-          <p class="lead">
-            My journey in web development has led me to cultivate skills in
-            front-end design, ensuring that each project I work on is not only
-            functional and accessible but also visually engaging.
+          <p class="lead" id="about-description">
+            Outside of analytics, I enjoy dancing salsa and bachata and cheering
+            on my favorite teams – the New York Jets and New York Yankees.
+            Whether working with data or on the dance floor, I bring energy,
+            focus, and creativity to everything I do.
           </p>
         </div>
+
+        <!-- Image Column: Appears Second -->
+        <div class="col-md-4 order-md-2 text-center mb-4 mb-md-0">
+          <div class="image-container">
+            <img
+              src="https://my-images-bucket-samboy.s3.us-east-2.amazonaws.com/6b0613a3-74fa-483e-9680-ff89c058e216+2.png"
+              alt="Profile Photo"
+              class="img-fluid rounded-circle"
+            />
+          </div>
+        </div>
       </div>
+      <a
+        class="btn btn-primary btn-lg"
+        href="https://www.linkedin.com/in/realluissamboy"
+        target="_blank"
+        rel="noopener noreferrer"
+        >View My Experience</a
+      >
     </section>
 
     <!-- =========================
-       PROJECTS SECTION (CAROUSEL)
-       Replace placeholder images and text with your projects.
-  ========================== -->
-    <section id="projects" class="py-5">
+   PROJECTS SECTION (CAROUSEL)
+========================== -->
+    <section id="projects" class="py-1">
       <div
         id="carouselExampleDark"
         class="carousel carousel-dark slide"
         data-bs-ride="carousel"
       >
+        <!-- Indicators -->
         <div class="carousel-indicators">
           <button
             type="button"
@@ -151,74 +171,91 @@
             data-bs-slide-to="0"
             class="active"
             aria-current="true"
-            aria-label="Slide 1"
+            aria-label="Project 1"
           ></button>
           <button
             type="button"
             data-bs-target="#carouselExampleDark"
             data-bs-slide-to="1"
-            aria-label="Slide 2"
+            aria-label="Project 2"
           ></button>
           <button
             type="button"
             data-bs-target="#carouselExampleDark"
             data-bs-slide-to="2"
-            aria-label="Slide 3"
+            aria-label="Project 3"
           ></button>
         </div>
 
+        <!-- Carousel Content -->
         <div class="carousel-inner">
           <!-- Slide 1 -->
-          <!-- Replace src with your project screenshot and update caption -->
-          <div class="carousel-item active" data-bs-interval="10000">
-            <img
-              src="https://via.placeholder.com/1200x600"
-              class="d-block w-100"
-              alt="Project Screenshot 1"
-            />
-            <div class="carousel-caption d-none d-md-block">
-              <h5>First Project Title</h5>
-              <p>
-                Brief description of the first project. Highlight the
-                technologies used and the purpose.
+          <div class="carousel-item active" data-bs-interval="5000">
+            <a
+              href="https://public.tableau.com/views/RealEstateValueAnalysis/Dashboard1"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://public.tableau.com/static/images/Re/RealEstateValueAnalysis/Dashboard1/1.png"
+                class="d-block w-100 faded-image"
+                alt="Real Estate Value Analysis Dashboard"
+              />
+            </a>
+            <div class="carousel-caption bg-dark bg-opacity-75 p-3 rounded">
+              <h5 class="text-white">Real Estate Value Analysis</h5>
+              <p class="text-white">
+                Analyzed real estate market trends using Tableau dashboards.
               </p>
             </div>
           </div>
 
           <!-- Slide 2 -->
-          <div class="carousel-item" data-bs-interval="2000">
-            <img
-              src="https://via.placeholder.com/1200x600"
-              class="d-block w-100"
-              alt="Project Screenshot 2"
-            />
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Second Project Title</h5>
-              <p>
-                Brief description of the second project. Highlight the
-                technologies used and the purpose.
+          <div class="carousel-item" data-bs-interval="5000">
+            <a
+              href="https://public.tableau.com/views/SecondProjectDashboard"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://via.placeholder.com/1200x600"
+                class="d-block w-100 faded-image"
+                alt="Second Project Screenshot"
+              />
+            </a>
+            <div class="carousel-caption bg-dark bg-opacity-75 p-3 rounded">
+              <h5 class="text-white">Sales Performance Dashboard</h5>
+              <p class="text-white">
+                Built an interactive Power BI dashboard to track sales goals and
+                KPIs.
               </p>
             </div>
           </div>
 
           <!-- Slide 3 -->
-          <div class="carousel-item">
-            <img
-              src="https://via.placeholder.com/1200x600"
-              class="d-block w-100"
-              alt="Project Screenshot 3"
-            />
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Third Project Title</h5>
-              <p>
-                Brief description of the third project. Highlight the
-                technologies used and the purpose.
+          <div class="carousel-item" data-bs-interval="5000">
+            <a
+              href="https://github.com/yourprojectrepo"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://via.placeholder.com/1200x600"
+                class="d-block w-100"
+                alt="Third Project Screenshot"
+              />
+            </a>
+            <div class="carousel-caption bg-dark bg-opacity-75 p-3 rounded">
+              <h5 class="text-white">Custom Web Analytics</h5>
+              <p class="text-white">
+                Developed a web-based tool for tracking website analytics using
+                SQL and JavaScript.
               </p>
             </div>
           </div>
         </div>
 
-        <!-- Carousel Controls -->
+        <!-- Controls -->
         <button
           class="carousel-control-prev"
           type="button"
@@ -251,82 +288,50 @@
           Here are some of the tools and technologies I have experience with:
         </p>
 
-        <div class="row g-4 justify-content-center" id="skills-list">
-          <!-- HTML Skill -->
-          <div class="col-6 col-sm-4 col-md-2">
-            <!-- Replace the placeholder with an actual HTML icon -->
-            <img
-              src="https://via.placeholder.com/50"
-              alt="HTML icon"
-              class="skill-img"
-            />
-            <p>HTML</p>
-          </div>
-
-          <!-- CSS Skill -->
-          <div class="col-6 col-sm-4 col-md-2">
-            <!-- Replace the placeholder with an actual CSS icon -->
-            <img
-              src="https://via.placeholder.com/50"
-              alt="CSS icon"
-              class="skill-img"
-            />
-            <p>CSS</p>
-          </div>
-
-          <!-- JavaScript Skill -->
-          <div class="col-6 col-sm-4 col-md-2">
-            <!-- Replace the placeholder with an actual JavaScript icon -->
-            <img
-              src="https://via.placeholder.com/50"
-              alt="JavaScript icon"
-              class="skill-img"
-            />
-            <p>JavaScript</p>
+        <div
+          class="row row-cols-2 row-cols-md-3 g-4 justify-content-center"
+          id="skills-list"
+        >
+          <!-- SQL Skill -->
+          <div class="col text-center">
+            <i class="fa-solid fa-file-excel fa-3x skill-img"></i>
+            <p>SQL</p>
           </div>
 
           <!-- Tableau Skill -->
-          <div class="col-6 col-sm-4 col-md-2">
-            <!-- Replace the placeholder with an actual Tableau icon -->
-            <img
-              src="https://via.placeholder.com/50"
-              alt="Tableau icon"
-              class="skill-img"
-            />
+          <div class="col text-center">
+            <i class="fa-solid fa-chart-pie fa-3x skill-img"></i>
             <p>Tableau</p>
           </div>
 
           <!-- Power BI Skill -->
-          <div class="col-6 col-sm-4 col-md-2">
-            <!-- Replace the placeholder with an actual Power BI icon -->
-            <img
-              src="https://via.placeholder.com/50"
-              alt="Power BI icon"
-              class="skill-img"
-            />
+          <div class="col text-center">
+            <i class="fa-solid fa-chart-bar fa-3x skill-img"></i>
             <p>Power BI</p>
           </div>
 
-          <!-- SQL Skill -->
-          <div class="col-6 col-sm-4 col-md-2">
-            <!-- Replace the placeholder with an actual SQL icon -->
-            <img
-              src="https://via.placeholder.com/50"
-              alt="SQL icon"
-              class="skill-img"
-            />
-            <p>SQL</p>
+          <!-- Excel Skill -->
+          <div class="col text-center">
+            <i class="fa-solid fa-chart-line fa-3x skill-img"></i>
+            <p>Excel</p>
           </div>
 
-          <!-- Excel Skill -->
-          <div class="col-6 col-sm-4 col-md-2">
-            <!-- Replace the placeholder with an actual Excel icon -->
-            <img
-              src="https://via.placeholder.com/50"
-              alt="Excel icon"
-              class="skill-img"
-            />
-            <p>Excel</p>
+          <!-- HTML Skill -->
+          <div class="col text-center">
+            <i class="fa-brands fa-html5 fa-3x skill-img"></i>
+            <p>HTML</p>
+          </div>
+
+          <!-- CSS Skill -->
+          <div class="col text-center">
+            <i class="fa-brands fa-css3 fa-3x skill-img"></i>
+            <p>CSS</p>
+          </div>
+
+          <!-- JavaScript Skill -->
+          <div class="col text-center">
+            <i class="fa-brands fa-js fa-3x skill-img"></i>
+            <p>JavaScript</p>
           </div>
         </div>
       </div>
@@ -388,10 +393,13 @@
           <!-- Contact Info (Right) -->
           <div class="col-md-6">
             <h3 class="mb-3">Contact Details</h3>
-            <p class="mb-2"><strong>Phone:</strong> (555) 123-4567</p>
-            <p class="mb-2"><strong>Email:</strong> me@example.com</p>
-            <p class="mb-4">
-              <strong>Address:</strong> 123 Main St, Anytown, USA
+            <p class="mb-2">
+              <strong>Phone:</strong>
+              <a href="tel:+16465350734">(619) 831-2725</a>
+            </p>
+            <p class="mb-2">
+              <strong>Email:</strong>
+              <a href="mailto:contact@luissamboy.com">contact@luissamboy.com</a>
             </p>
 
             <h4 class="mb-3">Connect with Me</h4>
@@ -400,13 +408,9 @@
               <a href="#" class="text-decoration-none text-dark">
                 <i class="fa-brands fa-threads fa-2x"></i>
               </a>
-              <!-- X  -->
+              <!-- LinkedIn  -->
               <a href="#" class="text-decoration-none text-dark">
-                <i class="fa-brands fa-x-twitter fa-2x"></i>
-              </a>
-              <!-- Instagram -->
-              <a href="#" class="text-decoration-none text-dark">
-                <i class="fa-brands fa-youtube fa-2x"></i>
+                <i class="fa-brands fa-linkedin fa-2x"></i>
               </a>
             </div>
           </div>
@@ -421,7 +425,13 @@
     <footer class="bg-light">
       <div class="container d-flex align-items-center" style="height: 56px">
         <!-- Replace with your own logo URL -->
-        <img src="https://via.placeholder.com/50" alt="Logo" class="me-2" />
+        <img
+          src="https://my-images-bucket-samboy.s3.us-east-2.amazonaws.com/Remove+background+project.png"
+          alt="Logo"
+          width="30"
+          height="30"
+          class="me-2"
+        />
         <p class="mb-0">Designed by Luis Samboy 2024</p>
       </div>
     </footer>

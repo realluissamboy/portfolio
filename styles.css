@@ -39,6 +39,11 @@ body {
 body {
   padding-top: var(--navbar-height);
 }
+
+html {
+  scroll-padding-top: 60px; /* Adjust this value to match your navbar height */
+  scroll-behavior: smooth; /* Optional: Adds smooth scrolling */
+}
 /* =======================================================
    NAVBAR STYLES
    ======================================================= */
@@ -74,6 +79,10 @@ body {
 
 .nav-link:hover {
   color: var(--primary-color);
+}
+
+#navbar img {
+  background-color: transparent;
 }
 
 /*
@@ -145,19 +154,14 @@ body {
 */
 
 #hero {
-  width: 100%;
+  background-image: url('https://cdn.pixabay.com/photo/2020/04/19/01/20/chart-5061485_1280.jpg'),
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   min-height: 100vh;
-  background: linear-gradient(
-    to bottom right,
-    var(--primary-color),
-    var(--secondary-color)
-  );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-  z-index: 1;
+  color: white;
+  background-blend-mode: overlay; /* Blend the gradient with the image */
 }
 
 #hero-title {
@@ -171,13 +175,9 @@ body {
   margin-bottom: 2rem;
 }
 
-#hero .btn-primary {
-  background-color: var(--primary-color);
-  border: none;
-}
-
-#hero .btn-primary:hover {
-  background-color: #140f7a; /* Slightly darker tone of primary */
+.hero-logo {
+  width: 250px; /* Adjust size for a medium logo */
+  height: auto; /* Maintain aspect ratio */
 }
 
 /* =======================================================
@@ -206,11 +206,24 @@ body {
   margin-bottom: 1.5rem;
 }
 
-#about img {
-  max-width: 100%;
-  height: auto;
-  border: 2px solid #ddd;
-  border-radius: 50%;
+#about .image-container {
+  width: 250px; /* Fixed width for the container */
+  height: 250px; /* Fixed height for the container */
+  border-radius: 50%; /* Circular container */
+  overflow: hidden; /* Ensure image doesn't spill out */
+  position: relative; /* Keeps the image contained */
+  display: inline-block; /* Prevents unintended resizing */
+}
+
+#about .image-container img {
+  width: 100%; /* Ensure the image fills the container */
+  height: 100%;
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
+  transition: transform 0.4s ease-in-out; /* Smooth scaling effect */
+}
+
+#about .image-container img:hover {
+  transform: scale(1.2); /* Magnify the image */
 }
 
 /* =======================================================
@@ -245,6 +258,32 @@ body {
   background: rgba(0, 0, 0, 0.5);
   padding: 1rem;
   border-radius: 5px;
+}
+
+/* Fade effect for the image */
+.faded-image {
+  filter: brightness(70%); /* Darkens the image */
+  transition: filter 0.3s ease-in-out; /* Smooth transition */
+}
+
+/* Optional: Add hover effect to the image */
+.carousel-item:hover .faded-image {
+  filter: brightness(100%);
+}
+
+/* Fade effect for the image */
+.faded-image {
+  filter: blur(1.5px) brightness(85%);
+  transition: filter 0.3s ease-in-out; /* Smooth transition */
+}
+
+/* Change carousel indicators to white */
+.carousel-indicators button {
+  background-color: white !important;
+}
+
+.carousel-indicators .active {
+  background-color: white !important;
 }
 
 /* =======================================================
